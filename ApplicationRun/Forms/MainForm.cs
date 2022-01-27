@@ -67,8 +67,7 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton4_Click(object sender, EventArgs e)
         {
-            КлиентПредставление Main = new КлиентПредставление();
-            Main.Show();
+            
         }
 
         private void bunifuButton3_Click(object sender, EventArgs e)
@@ -93,14 +92,12 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton6_Click_1(object sender, EventArgs e)
         {
-            СамолётПредставление Main = new СамолётПредставление();
-            Main.Show();
+           
         }
 
         private void bunifuButton7_Click(object sender, EventArgs e)
         {
-            РейсПредставление Main = new РейсПредставление();
-            Main.Show();
+           
         }
     }
 }

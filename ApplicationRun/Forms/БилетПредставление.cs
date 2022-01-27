@@ -147,12 +147,12 @@ namespace ApplicationRun.Forms
                     command.ExecuteScalar();
                 }
 
-                Клиент Main = new Клиент();
-                Main.kodbileta = this.kodbileta;
-                Main.kodreysa = this.kodreysa;
-                Main.mesto = this.mesto;
-                Main.Show();
-                Main.bunifuButton3.Visible = true;
+                //Клиент Main = new Клиент();
+                //Main.kodbileta = this.kodbileta;
+                //Main.kodreysa = this.kodreysa;
+                //Main.mesto = this.mesto;
+                //Main.Show();
+                //Main.bunifuButton3.Visible = true;
             }
             catch (Exception exception)
             {
