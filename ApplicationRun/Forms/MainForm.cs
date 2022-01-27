@@ -8,7 +8,7 @@ namespace ApplicationRun.Forms
 
     public partial class MainForm : Form
     {
-        string connectionString = @"Data Source=HOME\SQLEXPRESS;Initial Catalog=Аэропорт;" + "Integrated Security=SSPI;Pooling=False";
+        string connectionString = @"SERVER=wpl36.hosting.reg.ru;" + "DATABASE=u1580638_graduationwork;" + "UID=u1580638_learner;" + "PASSWORD=Qxdm?779;" + "connection timeout = 180";
         Timer myTimer = new Timer();
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -18,34 +18,34 @@ namespace ApplicationRun.Forms
 
         private void timer1_Tick(object sender, EventArgs e)
         {           
-            try
-            {
-                using SqlConnection connection = new SqlConnection(connectionString);
-                {
-                    connection.Open();
-                    SqlTransaction transaction = connection.BeginTransaction();
-                    SqlCommand command = connection.CreateCommand();
-                    command.Transaction = transaction;
+            //try
+            //{
+            //    using SqlConnection connection = new SqlConnection(connectionString);
+            //    {
+            //        connection.Open();
+            //        SqlTransaction transaction = connection.BeginTransaction();
+            //        SqlCommand command = connection.CreateCommand();
+            //        command.Transaction = transaction;
 
-                    try
-                    {
-                        command.CommandText = $"EXEC ТранзакцияБаланс";
-                        command.ExecuteNonQuery();
-                        transaction.Commit();
-                        SqlCommand command2 = new SqlCommand("SELECT * FROM Баланс", connection);
-                        label2.Text = $"Баланс:\n{command2.ExecuteScalar().ToString()}";
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($@"Исключение: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        transaction.Rollback();
-                    }                                     
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //        try
+            //        {
+            //            command.CommandText = $"EXEC ТранзакцияБаланс";
+            //            command.ExecuteNonQuery();
+            //            transaction.Commit();
+            //            SqlCommand command2 = new SqlCommand("SELECT * FROM Баланс", connection);
+            //            label2.Text = $"Баланс:\n{command2.ExecuteScalar().ToString()}";
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show($@"Исключение: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            transaction.Rollback();
+            //        }                                     
+            //    }
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         public MainForm()
@@ -56,13 +56,13 @@ namespace ApplicationRun.Forms
             myTimer.Tick += timer1_Tick;
             myTimer.Start();
 
-            using SqlConnection connection = new SqlConnection(connectionString);
-            {
-                connection.Open();
-                SqlCommand command2 = new SqlCommand("SELECT * FROM Баланс", connection);
-                label2.Text = $"Баланс:\n{command2.ExecuteScalar().ToString()}";
+            //using SqlConnection connection = new SqlConnection(connectionString);
+            //{
+            //    connection.Open();
+            //    SqlCommand command2 = new SqlCommand("SELECT * FROM Баланс", connection);
+            //    label2.Text = $"Баланс:\n{command2.ExecuteScalar().ToString()}";
 
-            }
+            //}
         }
 
         private void bunifuButton4_Click(object sender, EventArgs e)

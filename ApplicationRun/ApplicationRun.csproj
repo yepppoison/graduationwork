@@ -88,9 +88,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0-rc.2.20475.5\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
@@ -99,17 +98,14 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Net" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Security.AccessControl.5.0.0-rc.2.20475.5\lib\net461\System.Security.AccessControl.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
-    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-      <HintPath>..\packages\System.Security.Permissions.5.0.0-rc.2.20475.5\lib\net461\System.Security.Permissions.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0-rc.2.20475.5\lib\net461\System.Security.Principal.Windows.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
@@ -143,23 +139,11 @@
     <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Билет.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Билет.Designer.cs">
       <DependentUpon>Билет.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Должности.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Должности.Designer.cs">
-      <DependentUpon>Должности.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\БилетКлиента.cs">
       <SubType>Form</SubType>
@@ -173,54 +157,6 @@
     <Compile Include="Forms\БилетПредставление.Designer.cs">
       <DependentUpon>БилетПредставление.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Клиент.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Клиент.Designer.cs">
-      <DependentUpon>Клиент.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\КлиентПредставление.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\КлиентПредставление.Designer.cs">
-      <DependentUpon>КлиентПредставление.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Пользователи.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Пользователи.Designer.cs">
-      <DependentUpon>Пользователи.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Рейс.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Рейс.Designer.cs">
-      <DependentUpon>Рейс.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\РейсПредставление.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\РейсПредставление.Designer.cs">
-      <DependentUpon>РейсПредставление.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Самолёт.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Самолёт.Designer.cs">
-      <DependentUpon>Самолёт.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\СамолётПредставление.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\СамолётПредставление.Designer.cs">
-      <DependentUpon>СамолётПредставление.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Сотрудник.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Сотрудник.Designer.cs">
-      <DependentUpon>Сотрудник.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Admin.resx">
@@ -232,44 +168,14 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Билет.resx">
       <DependentUpon>Билет.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Должности.resx">
-      <DependentUpon>Должности.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\БилетКлиента.resx">
       <DependentUpon>БилетКлиента.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\БилетПредставление.resx">
       <DependentUpon>БилетПредставление.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Клиент.resx">
-      <DependentUpon>Клиент.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\КлиентПредставление.resx">
-      <DependentUpon>КлиентПредставление.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Пользователи.resx">
-      <DependentUpon>Пользователи.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Рейс.resx">
-      <DependentUpon>Рейс.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\РейсПредставление.resx">
-      <DependentUpon>РейсПредставление.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Самолёт.resx">
-      <DependentUpon>Самолёт.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\СамолётПредставление.resx">
-      <DependentUpon>СамолётПредставление.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Сотрудник.resx">
-      <DependentUpon>Сотрудник.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
