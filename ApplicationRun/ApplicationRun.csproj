@@ -234,17 +234,35 @@
     <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Билет.cs">
+    <Compile Include="Forms\medical_institution.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Билет.Designer.cs">
-      <DependentUpon>Билет.cs</DependentUpon>
+    <Compile Include="Forms\medical_institution.Designer.cs">
+      <DependentUpon>medical_institution.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\БилетКлиента.cs">
+    <Compile Include="Forms\af.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\БилетКлиента.Designer.cs">
-      <DependentUpon>БилетКлиента.cs</DependentUpon>
+    <Compile Include="Forms\af.Designer.cs">
+      <DependentUpon>af.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\patient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\patient.Designer.cs">
+      <DependentUpon>patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\statistics.Designer.cs">
+      <DependentUpon>statistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\users.Designer.cs">
+      <DependentUpon>users.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\БилетПредставление.cs">
       <SubType>Form</SubType>
@@ -263,11 +281,20 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Билет.resx">
-      <DependentUpon>Билет.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\medical_institution.resx">
+      <DependentUpon>medical_institution.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\БилетКлиента.resx">
-      <DependentUpon>БилетКлиента.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\af.resx">
+      <DependentUpon>af.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\patient.resx">
+      <DependentUpon>patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\statistics.resx">
+      <DependentUpon>statistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\users.resx">
+      <DependentUpon>users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\БилетПредставление.resx">
       <DependentUpon>БилетПредставление.cs</DependentUpon>
@@ -282,7 +309,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ApplicationRun_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

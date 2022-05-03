@@ -17,7 +17,7 @@ namespace ApplicationRun.Forms
         {
             printDocument1.Print();
         }
-
+        
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             try
@@ -114,7 +114,7 @@ namespace ApplicationRun.Forms
         private void работаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Билет Main = new Билет();
+            patient Main = new patient();
             Main.Show();
         }
 

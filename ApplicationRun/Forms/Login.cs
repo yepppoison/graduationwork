@@ -8,8 +8,8 @@ namespace ApplicationRun.Forms
 {
     public partial class Login : Form
     {
-        string connectionString = @"SERVER=wpl36.hosting.reg.ru;" + "DATABASE=u1580638_graduationwork;" + "UID=u1580638_learner;" + "PASSWORD=Qxdm?779;" + "connection timeout = 180";
 
+        string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
         public Login()
         {
             InitializeComponent();
@@ -48,14 +48,12 @@ namespace ApplicationRun.Forms
                 using MySqlConnection connection = new MySqlConnection(connectionString);
                 {
                     connection.Open();
-
-                    string sql = $"SELECT * FROM user WHERE login = '" + textBox1.Text + "'" + "AND password = '" + textBox2.Text + "'";
-
+                    string sql= $"CALL authorization('" + textBox1.Text + "'" + ",'" + textBox2.Text + "')"+";SELECT * FROM tmp_authorization";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
 
-                    string sql_admin = $"SELECT * FROM authorization WHERE login = '" + textBox1.Text + "'" + "AND password = '" + textBox2.Text + "'" + "AND acces_name = 'Администратор'";
+                    string sql_admin = $"SELECT * FROM tmp_authorization WHERE acces_name = 'Администратор'";
 
                     MySqlDataAdapter adapter_admin = new MySqlDataAdapter(sql_admin, connection);
                     DataSet ds_admin = new DataSet();
@@ -64,12 +62,12 @@ namespace ApplicationRun.Forms
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         this.Hide();
-                        MainForm Main = new MainForm();   //CALL authorization
+                        MainForm Main = new MainForm();   
 
-                        MySqlCommand command = new MySqlCommand($"SELECT surname FROM users WHERE login = '" + textBox1.Text + "'" + "AND password = '" + textBox2.Text + "'", connection);
-                        MySqlCommand command2 = new MySqlCommand($"SELECT name FROM users WHERE login = '" + textBox1.Text + "'" + "AND password = '" + textBox2.Text + "'", connection);
-                        MySqlCommand command3 = new MySqlCommand($"SELECT name_post FROM users WHERE login = '" + textBox1.Text + "'" + "AND password = '" + textBox2.Text + "'", connection);
-                        Main.label1.Text = $"Авторизованный пользователь:\n{command.ExecuteScalar().ToString()} {command2.ExecuteScalar().ToString()} - {command3.ExecuteScalar().ToString()}";
+                        MySqlCommand command1 = new MySqlCommand($"SELECT surname FROM tmp_authorization", connection);
+                        MySqlCommand command2 = new MySqlCommand($"SELECT name FROM tmp_authorization", connection);
+                        MySqlCommand command3 = new MySqlCommand($"SELECT name_post FROM tmp_authorization", connection);
+                        Main.label1.Text = $"Авторизованный пользователь:\n{command1.ExecuteScalar().ToString()} {command2.ExecuteScalar().ToString()} - {command3.ExecuteScalar().ToString()}";
 
                         Main.Show();
                         if (ds_admin.Tables[0].Rows.Count > 0)
@@ -77,16 +75,20 @@ namespace ApplicationRun.Forms
                             Main.bunifuImageButton1.Enabled = true;
                         }
 
+                        MySqlCommand command_drop1 = new MySqlCommand($"DROP TEMPORARY TABLE IF EXISTS tmp_authorization", connection);
                         MessageBox.Show("Вход выполнен");
                     }
                     else
                         MessageBox.Show("Неправильный логин/пароль");
+
+                    MySqlCommand command_drop2 = new MySqlCommand($"DROP TEMPORARY TABLE IF EXISTS tmp_authorization", connection);
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
     }
 }

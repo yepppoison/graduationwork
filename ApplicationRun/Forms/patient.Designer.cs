@@ -1,7 +1,7 @@
 ﻿
 namespace ApplicationRun.Forms
 {
-    partial class БилетКлиента
+    partial class patient
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ApplicationRun.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(БилетКлиента));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(patient));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
@@ -66,7 +66,7 @@ namespace ApplicationRun.Forms
             this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(98, 229);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(139, 654);
             this.flowLayoutPanel4.TabIndex = 23;
             // 
             // bunifuButton7
@@ -106,7 +106,8 @@ namespace ApplicationRun.Forms
             this.bunifuButton7.IdleIconLeftImage = null;
             this.bunifuButton7.IdleIconRightImage = null;
             this.bunifuButton7.IndicateFocus = false;
-            this.bunifuButton7.Location = new System.Drawing.Point(3, 3);
+            this.bunifuButton7.Location = new System.Drawing.Point(4, 4);
+            this.bunifuButton7.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuButton7.Name = "bunifuButton7";
             stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties7.BorderRadius = 10;
@@ -126,7 +127,7 @@ namespace ApplicationRun.Forms
             stateProperties8.IconLeftImage = null;
             stateProperties8.IconRightImage = null;
             this.bunifuButton7.OnPressedState = stateProperties8;
-            this.bunifuButton7.Size = new System.Drawing.Size(90, 70);
+            this.bunifuButton7.Size = new System.Drawing.Size(120, 86);
             this.bunifuButton7.TabIndex = 37;
             this.bunifuButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton7.TextMarginLeft = 0;
@@ -170,7 +171,8 @@ namespace ApplicationRun.Forms
             this.bunifuButton1.IdleIconLeftImage = null;
             this.bunifuButton1.IdleIconRightImage = null;
             this.bunifuButton1.IndicateFocus = false;
-            this.bunifuButton1.Location = new System.Drawing.Point(3, 79);
+            this.bunifuButton1.Location = new System.Drawing.Point(4, 98);
+            this.bunifuButton1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuButton1.Name = "bunifuButton1";
             stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties9.BorderRadius = 10;
@@ -190,7 +192,7 @@ namespace ApplicationRun.Forms
             stateProperties10.IconLeftImage = null;
             stateProperties10.IconRightImage = null;
             this.bunifuButton1.OnPressedState = stateProperties10;
-            this.bunifuButton1.Size = new System.Drawing.Size(90, 70);
+            this.bunifuButton1.Size = new System.Drawing.Size(120, 86);
             this.bunifuButton1.TabIndex = 38;
             this.bunifuButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton1.TextMarginLeft = 0;
@@ -234,7 +236,8 @@ namespace ApplicationRun.Forms
             this.bunifuButton2.IdleIconLeftImage = null;
             this.bunifuButton2.IdleIconRightImage = null;
             this.bunifuButton2.IndicateFocus = false;
-            this.bunifuButton2.Location = new System.Drawing.Point(3, 155);
+            this.bunifuButton2.Location = new System.Drawing.Point(4, 192);
+            this.bunifuButton2.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuButton2.Name = "bunifuButton2";
             stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties11.BorderRadius = 10;
@@ -254,7 +257,7 @@ namespace ApplicationRun.Forms
             stateProperties12.IconLeftImage = null;
             stateProperties12.IconRightImage = null;
             this.bunifuButton2.OnPressedState = stateProperties12;
-            this.bunifuButton2.Size = new System.Drawing.Size(90, 70);
+            this.bunifuButton2.Size = new System.Drawing.Size(120, 86);
             this.bunifuButton2.TabIndex = 39;
             this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton2.TextMarginLeft = 0;
@@ -276,14 +279,16 @@ namespace ApplicationRun.Forms
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.dataGridView1.Location = new System.Drawing.Point(99, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(139, 32);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(299, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(1785, 622);
             this.dataGridView1.TabIndex = 9;
             // 
             // menuStrip1
@@ -292,10 +297,10 @@ namespace ApplicationRun.Forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1,
             this.toolStripTextBox1});
-            this.menuStrip1.Location = new System.Drawing.Point(98, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(139, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(300, 27);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1785, 32);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -308,28 +313,27 @@ namespace ApplicationRun.Forms
             "Код клиента",
             "Код рейса"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(160, 28);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(132, 28);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged_1);
             // 
-            // БилетКлиента
+            // patient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 229);
+            this.ClientSize = new System.Drawing.Size(1924, 654);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.flowLayoutPanel4);
-            this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "БилетКлиента";
-            this.Text = "Чеки";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.БилетКлиента_FormClosing);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "patient";
+            this.Text = "Пациенты";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.patient_FormClosing);
             this.flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);

@@ -1,29 +1,30 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ApplicationRun.Forms
 {
-    public partial class Билет : Form
+    public partial class medical_institution : Form
     {
         DataSet ds;
         SqlDataAdapter adapter;
 
         SqlCommandBuilder commandBuilder;
-        string connectionString = @"Data Source=HOME\SQLEXPRESS;Initial Catalog=Аэропорт;" + "Integrated Security=SSPI;Pooling=False";
-        string sql = "SELECT * FROM Билет";
+        string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
+        string sql = "SELECT * FROM medical_institution";
 
-        public Билет()
+        public medical_institution()
         {
             InitializeComponent();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
 
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                adapter = new SqlDataAdapter(sql, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
@@ -32,20 +33,18 @@ namespace ApplicationRun.Forms
                 dataGridView1.Columns[2].Width = 60;
                 dataGridView1.Columns[3].Width = 65;
                 dataGridView1.Columns[4].Width = 50;
-                dataGridView1.Columns[5].Width = 90;
-                dataGridView1.Columns[6].Width = 45;
             }
         }
 
-        private void Билет_FormClosing(object sender, FormClosingEventArgs e)
+        private void medical_institution_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
-                using SqlConnection connection = new SqlConnection(connectionString);
+                using MySqlConnection connection = new MySqlConnection(connectionString);
                 {
                     connection.Open();
-                    SqlDataAdapter adapter_new_1 = new SqlDataAdapter(sql, connection);
-                    commandBuilder = new SqlCommandBuilder(adapter_new_1);
+                    MySqlDataAdapter adapter_new_1 = new MySqlDataAdapter(sql, connection);
+                    MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter_new_1);
                     adapter_new_1.Update(ds);
                 }
             }
@@ -55,25 +54,6 @@ namespace ApplicationRun.Forms
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Hide();
-        }
-
-        private void bunifuButton2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using SqlConnection connection = new SqlConnection(connectionString);
-                {
-                    connection.Open();
-                    adapter = new SqlDataAdapter(sql, connection);
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void bunifuButton1_Click(object sender, EventArgs e)
@@ -86,21 +66,40 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton7_Click(object sender, EventArgs e)
         {
-            DataRow row = ds.Tables[0].NewRow(); 
+            DataRow row = ds.Tables[0].NewRow();
             ds.Tables[0].Rows.Add(row);
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using MySqlConnection connection = new MySqlConnection(connectionString);
+                {
+                    connection.Open();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
+                    ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                using SqlConnection connection = new SqlConnection(connectionString);
+                using MySqlConnection connection = new MySqlConnection(connectionString);
                 {
                     connection.Open();
                     //string search = textBox1.ToString();
-                    string sql_search = $"SELECT * FROM Билет WHERE [{toolStripComboBox1.Text}] LIKE '" + toolStripTextBox1.Text + "%'";
+                    string sql_search = $"SELECT * FROM medical_inst WHERE [{toolStripComboBox1.Text}] LIKE '" + toolStripTextBox1.Text + "%'";
 
-                    adapter = new SqlDataAdapter(sql_search, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
 
                     ds = new DataSet();
                     adapter.Fill(ds);
