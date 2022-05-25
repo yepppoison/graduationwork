@@ -26,6 +26,16 @@ namespace ApplicationRun.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=graduationwork;Integrated Security=True")]
+        public string graduationworkConnectionString {
+            get {
+                return ((string)(this["graduationworkConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ANISINA\\SQLEXPRESS;Initial Catalog=GuideDatabase;Integrated Security=" +
             "True")]
         public string GuideDatabaseConnectionString {
@@ -74,16 +84,6 @@ namespace ApplicationRun.Properties {
         public string АэропортConnectionString {
             get {
                 return ((string)(this["АэропортConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=graduationwork;Integrated Security=True")]
-        public string graduationworkConnectionString {
-            get {
-                return ((string)(this["graduationworkConnectionString"]));
             }
         }
     }
