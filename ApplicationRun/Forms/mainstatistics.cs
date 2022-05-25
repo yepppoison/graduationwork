@@ -4,14 +4,19 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using Excel = Microsoft.Office.Interop.Excel;
+using MySql.Data.MySqlClient;
 
 namespace ApplicationRun.Forms
 {
       
-    public partial class БилетПредставление : Form
+    public partial class mainstatistics : Form
     {
         DataSet ds;
-        SqlDataAdapter adapter;
+        MySqlDataAdapter adapter;
+
+        MySqlCommandBuilder commandBuilder;
+        string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
+        string sql = "CALL Adminka_statistics_test('','');";
 
         private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -22,11 +27,14 @@ namespace ApplicationRun.Forms
         {
             try
             {
-                using SqlConnection connection = new SqlConnection(connectionString);
+                using MySqlConnection connection = new MySqlConnection(connectionString);
                 {
                     connection.Open();
-                    string sql_search = $"SELECT * FROM БилетПредставление WHERE [{toolStripComboBox1.Text}] LIKE '" + toolStripTextBox1.Text + "%'"; 
-                    adapter = new SqlDataAdapter(sql_search, connection);
+                    //string search = textBox1.ToString();
+                    string sql_search = $"CALL Adminka_statistics_test('" + toolStripTextBox1.Text + "','" + toolStripTextBox2.Text + "')";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
+
                     ds = new DataSet();
                     adapter.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
@@ -45,49 +53,35 @@ namespace ApplicationRun.Forms
             e.Graphics.DrawImage(bmp, 0, 0);
         }
 
-        SqlCommandBuilder commandBuilder;
-        string connectionString = @"Data Source=HOME\SQLEXPRESS;Initial Catalog=Аэропорт;" + "Integrated Security=SSPI;Pooling=False";
-        string sql = "SELECT * FROM БилетПредставление";
-
-        public БилетПредставление()
+        public mainstatistics()
         {
             InitializeComponent();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
-            toolStripComboBox1.Text = toolStripComboBox1.Items[0].ToString();
-            toolStripComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                adapter = new SqlDataAdapter(sql, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].Width = 45;
-                dataGridView1.Columns[1].Width = 45;
-                dataGridView1.Columns[2].Width = 45;
-                dataGridView1.Columns[3].Width = 90;
-                dataGridView1.Columns[4].Width = 80;
-                dataGridView1.Columns[5].Width = 75;
-                dataGridView1.Columns[6].Width = 75;
-                dataGridView1.Columns[7].Width = 70;
-                dataGridView1.Columns[8].Width = 50;
             }
         }
 
-        private void Билеты_FormClosing(object sender, FormClosingEventArgs e)
+        private void mainstatistics_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
-                using SqlConnection connection = new SqlConnection(connectionString);
+                using MySqlConnection connection = new MySqlConnection(connectionString);
                 {
                     connection.Open();
-                    SqlDataAdapter adapter_new_1 = new SqlDataAdapter(sql, connection);
-                    commandBuilder = new SqlCommandBuilder(adapter_new_1);
+                    MySqlDataAdapter adapter_new_1 = new MySqlDataAdapter(sql, connection);
+                    MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter_new_1);
                     adapter_new_1.Update(ds);
                 }
             }
+
             catch (Exception exception)
             {
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -74,14 +74,17 @@ namespace ApplicationRun.Forms
                         {
                             Main.bunifuImageButton1.Enabled = true;
                         }
-
+                        MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вход в программу', surname, name, NOW() FROM tmp_authorization;", connection);
+                        command_insert_log.ExecuteNonQuery();
                         MySqlCommand command_drop1 = new MySqlCommand($"DROP TEMPORARY TABLE IF EXISTS tmp_authorization", connection);
+                        command_drop1.ExecuteNonQuery();
                         MessageBox.Show("Вход выполнен");
                     }
                     else
                         MessageBox.Show("Неправильный логин/пароль");
 
                     MySqlCommand command_drop2 = new MySqlCommand($"DROP TEMPORARY TABLE IF EXISTS tmp_authorization", connection);
+                    command_drop2.ExecuteNonQuery();
                 }
             }
             catch (Exception exception)

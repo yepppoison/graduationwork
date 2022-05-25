@@ -222,6 +222,30 @@
     <Compile Include="Forms\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\convolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\convolution.Designer.cs">
+      <DependentUpon>convolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\diagnosis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\diagnosis.Designer.cs">
+      <DependentUpon>diagnosis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\disability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\disability.Designer.cs">
+      <DependentUpon>disability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\log.Designer.cs">
+      <DependentUpon>log.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,22 +282,31 @@
     <Compile Include="Forms\statistics.Designer.cs">
       <DependentUpon>statistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\type_diagnosis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\type_diagnosis.Designer.cs">
+      <DependentUpon>type_diagnosis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\users.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\users.Designer.cs">
       <DependentUpon>users.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\БилетПредставление.cs">
+    <Compile Include="Forms\mainstatistics.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\БилетПредставление.Designer.cs">
-      <DependentUpon>БилетПредставление.cs</DependentUpon>
+    <Compile Include="Forms\mainstatistics.Designer.cs">
+      <DependentUpon>mainstatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\log.resx">
+      <DependentUpon>log.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -296,8 +329,8 @@
     <EmbeddedResource Include="Forms\users.resx">
       <DependentUpon>users.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\БилетПредставление.resx">
-      <DependentUpon>БилетПредставление.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\mainstatistics.resx">
+      <DependentUpon>mainstatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

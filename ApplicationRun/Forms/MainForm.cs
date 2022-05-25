@@ -18,7 +18,9 @@ namespace ApplicationRun.Forms
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.ExitThread();
+            this.Hide();
+            Login Main = new Login();
+            Main.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -78,7 +80,7 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
-            БилетПредставление Main = new БилетПредставление();
+            mainstatistics Main = new mainstatistics();
             Main.Show();
         }
 
@@ -103,7 +105,7 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton7_Click(object sender, EventArgs e)
         {
-            statistics Main = new statistics();
+            type_diagnosis Main = new type_diagnosis();
             Main.Show();
         }
 
@@ -122,6 +124,30 @@ namespace ApplicationRun.Forms
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuButton10_Click(object sender, EventArgs e)
+        {
+            convolution Main = new convolution();
+            Main.Show();
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            disability Main = new disability();
+            Main.Show();
+        }
+
+        private void bunifuButton9_Click(object sender, EventArgs e)
+        {
+            log Main = new log();
+            Main.Show();
+        }
+
+        private void bunifuButton6_Click_2(object sender, EventArgs e)
+        {
+            diagnosis Main = new diagnosis();
+            Main.Show();
         }
     }
 }
