@@ -5,6 +5,10 @@ using System.Data.SqlClient;
 using System.Drawing;
 using Excel = Microsoft.Office.Interop.Excel;
 using MySql.Data.MySqlClient;
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Collections.Generic;
+using LiveCharts.Wpf.Charts.Base;
 
 namespace ApplicationRun.Forms
 {
@@ -16,7 +20,7 @@ namespace ApplicationRun.Forms
 
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
-        string sql = "CALL Adminka_statistics_test('','');";
+        string sql = "CALL Adminka_statistics_test('','','');";
 
         private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -31,13 +35,15 @@ namespace ApplicationRun.Forms
                 {
                     connection.Open();
                     //string search = textBox1.ToString();
-                    string sql_search = $"CALL Adminka_statistics_test('" + toolStripTextBox1.Text + "','" + toolStripTextBox2.Text + "')";
+                    string sql_search = $"CALL Adminka_statistics_test('" + toolStripTextBox1.Text + "','" + toolStripTextBox2.Text + "','" + "')";
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
 
                     ds = new DataSet();
                     adapter.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
+
+
                 }
             }
             catch (Exception exception)
@@ -67,6 +73,7 @@ namespace ApplicationRun.Forms
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
             }
+           
         }
 
         private void mainstatistics_FormClosing(object sender, FormClosingEventArgs e)
@@ -107,9 +114,10 @@ namespace ApplicationRun.Forms
 
         private void работаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            patient Main = new patient();
+            //this.Hide();
+            test Main = new test();
             Main.Show();
+
         }
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,6 +161,56 @@ namespace ApplicationRun.Forms
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void toolStripTextBox6_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using MySqlConnection connection = new MySqlConnection(connectionString);
+                {
+                    connection.Open();
+                    //string search = textBox1.ToString();
+                    string sql_search = $"CALL Adminka_statistics_test('" + toolStripTextBox1.Text + "','" + toolStripTextBox2.Text + "','" + toolStripTextBox6 + "')";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
+
+                    ds = new DataSet(); 
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+
+
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void toolStripTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using MySqlConnection connection = new MySqlConnection(connectionString);
+                {
+                    connection.Open();
+                    //string search = textBox1.ToString();
+                    string sql_search = $"CALL Adminka_statistics_test('" + toolStripTextBox1.Text + "','" + toolStripTextBox2.Text + "','"  + "')";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
+
+                    ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+
+
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

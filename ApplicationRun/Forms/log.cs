@@ -13,7 +13,7 @@ namespace ApplicationRun.Forms
 
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
-        string sql = "SELECT login, move, surname, name, dt FROM log WHERE dt>NOW()-INTERVAL 12 HOUR ORDER BY dt DESC;";
+        string sql = "SELECT login 'Логин', move 'Действие', surname 'Фамилия', name 'Имя', dt 'Дата' FROM log WHERE dt>NOW()-INTERVAL 12 HOUR ORDER BY dt DESC;";
 
         public log()
         {

@@ -12,18 +12,17 @@ using LiveCharts.Wpf.Charts.Base;
 
 namespace ApplicationRun.Forms
 {
-    public partial class diagnosis : Form
+
+    public partial class test : Form
     {
-        
         DataSet ds;
         MySqlDataAdapter adapter;
 
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
-        string sql = "SELECT id '№', name_of_diagnosis 'Диагноз' FROM diagnosis";
-        public diagnosis()
+        string sql = "CALL test('','');";
+        public test()
         {
-
             InitializeComponent();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
@@ -35,8 +34,10 @@ namespace ApplicationRun.Forms
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-
+         
             }
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
         }
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
@@ -47,19 +48,32 @@ namespace ApplicationRun.Forms
                 {
                     connection.Open();
                     //string search = textBox1.ToString();
-                    string sql_search = $"SELECT id '№', name_of_diagnosis 'Диагноз' FROM diagnosis WHERE name_of_diagnosis LIKE ('" + toolStripTextBox1.Text + "%')";
+                    string sql_search = $"CALL test('" + toolStripTextBox1.Text + "','" + dateTimePicker1.Text + "')";
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
 
                     ds = new DataSet();
                     adapter.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
+                    MessageBox.Show(dateTimePicker1.Text);
+
+
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void работаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
