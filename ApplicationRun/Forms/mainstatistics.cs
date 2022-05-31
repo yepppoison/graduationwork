@@ -25,6 +25,12 @@ namespace ApplicationRun.Forms
         private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             printDocument1.Print();
+            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            {
+                connection.Open();
+                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод обращений на печать', surname, name, NOW() FROM tmp_authorization;", connection);
+                command_insert_log.ExecuteNonQuery();
+            }
         }
         
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
