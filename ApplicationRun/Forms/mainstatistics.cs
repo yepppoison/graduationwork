@@ -1,18 +1,20 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using Excel = Microsoft.Office.Interop.Excel;
 using MySql.Data.MySqlClient;
-using LiveCharts;
-using LiveCharts.Wpf;
-using System.Collections.Generic;
-using LiveCharts.Wpf.Charts.Base;
+using System.IO;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using OfficeOpenXml.ConditionalFormatting;
+using OfficeOpenXml.Table;
+
 
 namespace ApplicationRun.Forms
 {
-      
+
     public partial class mainstatistics : Form
     {
         DataSet ds;
@@ -21,6 +23,7 @@ namespace ApplicationRun.Forms
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
         string sql = "CALL Adminka_statistics_test('','','');";
+
 
         private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -104,23 +107,69 @@ namespace ApplicationRun.Forms
 
         private void экспортToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Excel.Application exApp = new Excel.Application();
-            exApp.Workbooks.Add();
-            Excel.Worksheet wsh = (Excel.Worksheet)exApp.ActiveSheet;
-            int i, j;
-            for (i = 0; i <= dataGridView1.RowCount - 1; i++)
-            {
-                for (j = 0; j <= dataGridView1.ColumnCount - 1; j++)
-                {
-                    wsh.Cells[i + 1, j + 1] = dataGridView1[j, i].Value.ToString();
-                }
+            //Excel.Application exApp = new Excel.Application();
+            //exApp.Workbooks.Add();
+            //Excel.Worksheet wsh = (Excel.Worksheet)exApp.ActiveSheet;
+            //int i, j;
+            //for (i = 0; i <= dataGridView1.RowCount - 1; i++)
+            //{
+            //    for (j = 0; j <= dataGridView1.ColumnCount - 1; j++)
+            //    {
+            //        wsh.Cells[i + 1, j + 1] = dataGridView1[j, i].Value.ToString();
+            //    }
+            //}
+
+
+ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            //var table1 = 
+            int startRowT1 = 3;  //Для первого листа
+            int startColT1 = 1;  //Для первого листа
+            DateTime dt;
+            double d;
+             int i;int j;
+
+            FileInfo template = new FileInfo("C:/Users/learner/Desktop/graduationwork/Tables/Обращения.xlsx");
+            if (!template.Exists)
+            {  //Делаем проверку - если Template.xlsx отсутствует - выходим по красной ветке
+                //gradu.SendErrorToLog("Упс! Файл Excel-шаблона 'Template.xlsx' отсутствует в директории проекта.", true);
+                //return null;
             }
-            exApp.Visible = true;
+
+            using (ExcelPackage exPack = new ExcelPackage(template, true))
+            {
+                //Тут будет весь дальнейший код. А именно:
+                //Работа с 1 листом
+                //Работа со 2 листом
+                //Сохранение файла
+
+                ExcelWorksheet ws1 = exPack.Workbook.Worksheets[0];
+                //for (int row = startRowT1; row < dataGridView1.RowCount + startRowT1; row++)
+                //{
+                //    for (int col = startColT1; col < dataGridView1.ColumnCount + startColT1; col++)
+                //    {
+                //        ws1.Cells[row, col].Value = dataGridView1[col - startColT1, row - startRowT1];
+                //    }
+                //}
+                for (i = 0; i <= dataGridView1.RowCount -1; i++)
+                {
+                    for (j = 0; j <= dataGridView1.ColumnCount -1; j++)
+                    {
+                        ws1.Cells[i + 3, j + 1].Value = dataGridView1[j, i].Value.ToString();
+                    }
+                }
+                    Byte[] bin = exPack.GetAsByteArray();
+                string resPath = "C:/Users/learner/Desktop/graduationwork/Tables/Result.xlsx";
+                File.WriteAllBytes(resPath, bin);
+
+            }
+
+            
+            
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод отчёта обращений', surname, name, NOW() FROM tmp_authorization;", connection);
-                command_insert_log.ExecuteNonQuery();
+               // MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод отчёта обращений', surname, name, NOW() FROM tmp_authorization;", connection);
+               // command_insert_log.ExecuteNonQuery();
             }
         }
 
@@ -229,6 +278,11 @@ namespace ApplicationRun.Forms
             {
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

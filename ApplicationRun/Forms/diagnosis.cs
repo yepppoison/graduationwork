@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using Excel = Microsoft.Office.Interop.Excel;
 using MySql.Data.MySqlClient;
-using LiveCharts;
-using LiveCharts.Wpf;
-using System.Collections.Generic;
-using LiveCharts.Wpf.Charts.Base;
+
 
 namespace ApplicationRun.Forms
 {

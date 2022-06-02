@@ -175,8 +175,7 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
-            disability Main = new disability();
-            Main.Show();
+
         }
 
         private void bunifuButton9_Click(object sender, EventArgs e)

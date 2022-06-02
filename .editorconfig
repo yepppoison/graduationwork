@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS1760: Сборки "C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll" и "C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll" ссылаются на одни метаданные, но только одна из них является связанной ссылкой (указан параметр using /link); попробуйте удалить одну из ссылок.
+dotnet_diagnostic.CS1760.severity = error
