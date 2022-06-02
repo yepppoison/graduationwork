@@ -15,6 +15,7 @@ namespace ApplicationRun.Forms
         SqlDataAdapter adapter;
         SqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
+        string sql = "CALL test('','');";
 
         //string connectionString = @"SERVER=wpl36.hosting.reg.ru;" + "DATABASE=u1580638_graduationwork;" + "UID=u1580638_learner;" + "PASSWORD=Qxdm?779;" + "connection timeout = 180";
         Timer myTimer = new Timer();
@@ -65,6 +66,18 @@ namespace ApplicationRun.Forms
             myTimer.Enabled = true;
             myTimer.Tick += timer1_Tick;
             myTimer.Start();
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowUserToAddRows = false;
+
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            {
+                connection.Open();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+
+            }
 
 
             //using SqlConnection connection = new SqlConnection(connectionString);
@@ -259,6 +272,11 @@ namespace ApplicationRun.Forms
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
         {
 
         }
