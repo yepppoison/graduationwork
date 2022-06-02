@@ -18,6 +18,7 @@ namespace ApplicationRun.Forms
 
         //string connectionString = @"SERVER=wpl36.hosting.reg.ru;" + "DATABASE=u1580638_graduationwork;" + "UID=u1580638_learner;" + "PASSWORD=Qxdm?779;" + "connection timeout = 180";
         Timer myTimer = new Timer();
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
@@ -64,7 +65,7 @@ namespace ApplicationRun.Forms
             myTimer.Enabled = true;
             myTimer.Tick += timer1_Tick;
             myTimer.Start();
-  
+
 
             //using SqlConnection connection = new SqlConnection(connectionString);
             //{
@@ -78,8 +79,8 @@ namespace ApplicationRun.Forms
         private void bunifuButton4_Click(object sender, EventArgs e)
         {
             medical_institution Main = new medical_institution();
-            Main.Show();
-            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Просмотр мед. учреждений', surname, name, NOW() FROM tmp_authorization;", connection);
@@ -90,8 +91,8 @@ namespace ApplicationRun.Forms
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
             mainstatistics Main = new mainstatistics();
-            Main.Show();
-            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
@@ -126,8 +127,8 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            users Main = new users();
-            Main.Show();
+            employees Main = new employees();
+            Main.ShowDialog();
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
@@ -150,8 +151,8 @@ namespace ApplicationRun.Forms
         private void bunifuButton10_Click(object sender, EventArgs e)
         {
             convolution Main = new convolution();
-            Main.Show();
-            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Просмотр сотрудников онлайн', surname, name, NOW() FROM tmp_authorization;", connection);
@@ -168,8 +169,8 @@ namespace ApplicationRun.Forms
         private void bunifuButton9_Click(object sender, EventArgs e)
         {
             log Main = new log();
-            Main.Show();
-            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Просмотр журнала посещений', surname, name, NOW() FROM tmp_authorization;", connection);
@@ -179,9 +180,10 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton6_Click_2(object sender, EventArgs e)
         {
+            //ActiveForm.Enabled = false;
             diagnosis Main = new diagnosis();
-            Main.Show();
-            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с диагнозами', surname, name, NOW() FROM tmp_authorization;", connection);
@@ -191,12 +193,74 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton2_Click_1(object sender, EventArgs e)
         {
-            using MySqlConnection connection = new MySqlConnection(Login.connectionString);
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Просмотр субъектов РФ', surname, name, NOW() FROM tmp_authorization;", connection);
                 command_insert_log.ExecuteNonQuery();
             }
+        }
+
+        private void bunifuButton5_Click_1(object sender, EventArgs e)
+        {
+            Admin Main = new Admin();
+            Main.ShowDialog();
+        }
+
+        private void bunifuButton7_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login Main = new Login();
+            Main.Show();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+         void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void bunifuButton11_Click(object sender, EventArgs e)
+        {
+            mainstatistics Main = new mainstatistics();
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            {
+                connection.Open();
+                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
+                command_insert_log.ExecuteNonQuery();
+            }
+        }
+
+        private void bunifuButton3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuButton3_Click_2(object sender, EventArgs e)
+        {
+            medical_institution Main = new medical_institution();
+            Main.ShowDialog();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            {
+                connection.Open();
+                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Просмотр мед. учреждений', surname, name, NOW() FROM tmp_authorization;", connection);
+                command_insert_log.ExecuteNonQuery();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

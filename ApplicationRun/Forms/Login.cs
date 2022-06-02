@@ -72,7 +72,7 @@ namespace ApplicationRun.Forms
                         Main.Show();
                         if (ds_admin.Tables[0].Rows.Count > 0)
                         {
-                            Main.bunifuImageButton1.Enabled = true;
+                            Main.bunifuButton5.Visible = true;
                         }
                         MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вход в программу', surname, name, NOW() FROM tmp_authorization;", connection);
                         command_insert_log.ExecuteNonQuery();
@@ -89,7 +89,7 @@ namespace ApplicationRun.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($@"Ошибка: нет доступа к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

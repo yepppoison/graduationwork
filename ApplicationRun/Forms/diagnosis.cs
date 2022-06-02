@@ -61,5 +61,11 @@ namespace ApplicationRun.Forms
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void diagnosis_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+
+        }
     }
 }

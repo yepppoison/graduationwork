@@ -209,6 +209,7 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -307,17 +308,23 @@
     <Compile Include="Forms\type_diagnosis.Designer.cs">
       <DependentUpon>type_diagnosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\users.cs">
+    <Compile Include="Forms\employees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\users.Designer.cs">
-      <DependentUpon>users.cs</DependentUpon>
+    <Compile Include="Forms\employees.Designer.cs">
+      <DependentUpon>employees.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\mainstatistics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\mainstatistics.Designer.cs">
       <DependentUpon>mainstatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\users.Designer.cs">
+      <DependentUpon>users.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -351,11 +358,14 @@
     <EmbeddedResource Include="Forms\test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\users.resx">
-      <DependentUpon>users.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\employees.resx">
+      <DependentUpon>employees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\mainstatistics.resx">
       <DependentUpon>mainstatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\users.resx">
+      <DependentUpon>users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

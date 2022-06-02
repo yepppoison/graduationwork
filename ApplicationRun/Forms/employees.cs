@@ -6,15 +6,15 @@ using MySql.Data.MySqlClient;
 
 namespace ApplicationRun.Forms
 {
-    public partial class users : Form
+    public partial class employees : Form
     {
         DataSet ds;
         MySqlDataAdapter adapter;
 
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
-        string sql = "CALL useradmin()";
-        public users()
+        string sql = "CALL usermiac('');";
+        public employees()
         {
             InitializeComponent();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -27,39 +27,6 @@ namespace ApplicationRun.Forms
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-            }
-        }
-
-        private void bunifuButton7_Click(object sender, EventArgs e)
-        {
-            DataRow row = ds.Tables[0].NewRow();
-            ds.Tables[0].Rows.Add(row);
-        }
-
-        private void bunifuButton1_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                dataGridView1.Rows.Remove(row);
-            }
-        }
-
-        private void bunifuButton2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using MySqlConnection connection = new MySqlConnection(connectionString);
-                {
-                    connection.Open();
-                    adapter = new MySqlDataAdapter(sql, connection);
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -80,12 +47,31 @@ namespace ApplicationRun.Forms
             {
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // this.Hide();
+            this.Hide();
         }
 
-        private void bunifuButton3_Click(object sender, EventArgs e)
+        private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                using MySqlConnection connection = new MySqlConnection(connectionString);
+                {
+                    connection.Open();
+                    //string search = textBox1.ToString();
+                    string sql_search = $"CALL usermiac('" + toolStripTextBox1.Text + "'" +
+                        ")"; 
 
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
+
+                    ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
-}
+    }

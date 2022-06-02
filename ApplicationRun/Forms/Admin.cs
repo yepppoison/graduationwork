@@ -17,7 +17,8 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            
+            users Main = new users();
+            Main.Show(); 
         }
 
         private void bunifuButton7_Click(object sender, EventArgs e)
