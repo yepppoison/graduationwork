@@ -237,7 +237,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-          
+            Open_DropdownMenu(rjDropdownMenu1, sender);
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
@@ -340,80 +340,7 @@ namespace ApplicationRun.Forms
             Main.ShowDialog();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                using MySqlConnection connection = new MySqlConnection(connectionString);
-                {
-                    connection.Open();
-                    //string search = textBox1.ToString();
-                    string sql_search = $"CALL Adminka_statistics_test('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox1.Text + "')";
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
-
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-
-
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                using MySqlConnection connection = new MySqlConnection(connectionString);
-                {
-                    connection.Open();
-                    //string search = textBox1.ToString();
-                    string sql_search = $"CALL Adminka_statistics_test('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox1.Text + "')";
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
-
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-
-
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                using MySqlConnection connection = new MySqlConnection(connectionString);
-                {
-                    connection.Open();
-                    //string search = textBox1.ToString();
-                    string sql_search = $"CALL Adminka_statistics_test('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox1.Text + "')";
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql_search, connection);
-
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-
-
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+      
 
         private void iconButton2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -422,7 +349,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton2_MouseHover(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+            
         }
 
         private void iconButton2_LocationChanged(object sender, EventArgs e)

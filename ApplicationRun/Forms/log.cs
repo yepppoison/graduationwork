@@ -30,5 +30,12 @@ namespace ApplicationRun.Forms
                 dataGridView1.DataSource = ds.Tables[0];
             }
         }
+
+        private void log_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            Admin Main = new Admin();
+            Main.Show();
+        }
     }
 }

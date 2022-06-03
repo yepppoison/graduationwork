@@ -30,5 +30,19 @@ namespace ApplicationRun.Forms
         {
             
         }
+
+        private void bunifuButton4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            log Main=new log();
+            Main.Show();
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+            this.Hide();
+            employees Main = new employees();
+            Main.Show();
+        }
     }
 }

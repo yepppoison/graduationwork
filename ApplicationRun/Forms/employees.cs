@@ -48,6 +48,8 @@ namespace ApplicationRun.Forms
                 MessageBox.Show($@"Исключение: {exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Hide();
+            Admin Main = new Admin();
+            Main.Show();
         }
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
