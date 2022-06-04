@@ -10,7 +10,7 @@ namespace ApplicationRun.Forms
 {
     public partial class Login2 : Form
     {
-        static string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
+        string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
         public Login2()
         {
             InitializeComponent();

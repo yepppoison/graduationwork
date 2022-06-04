@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ApplicationRun.Forms
 {
-    public partial class af : Form
+    public partial class employee : Form
     {
-        public af()
+        public employee()
         {
             InitializeComponent();
         }

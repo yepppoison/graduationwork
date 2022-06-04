@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿
+using MySql.Data.MySqlClient;
 using OfficeOpenXml;
 using RJCodeAdvance.RJControls;
 using System;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LicenseContext = OfficeOpenXml.LicenseContext;
+using ApplicationRun.DashboardNamespace;
 
 namespace ApplicationRun.Forms
 {
@@ -24,12 +26,18 @@ namespace ApplicationRun.Forms
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
         string appeal = "CALL Adminka_statistics_test('','','');";
-        string hostipal = "SELECT * FROM medical_institution";
+        string hostipal = "CALL hospital();";
         string statistic = "CALL test('','');";
-        string diagnos = "SELECT id '№', name_of_diagnosis 'Диагноз' FROM diagnosis";
+        string diagnos = "SELECT name_of_diagnosis 'Диагноз' FROM diagnosis";
         //Fields
         private int borderSize = 2;
         private Size formSize; //Сохраняйте размер формы при ее сворачивании и восстановлении. Поскольку размер формы изменяется, поскольку учитывается размер строки заголовка и границ.
+
+
+        //Fields
+        private Dashboard model;
+        private Button currentButton;
+
 
 
         public bool UserSuccessfulAuthenticated { get; internal set; }
@@ -41,10 +49,105 @@ namespace ApplicationRun.Forms
             CollapseMenu();
             this.Padding = new Padding(borderSize); //Размер границы
             this.BackColor = Color.SteelBlue; //Цвет границы
+
+            //Default - Last 7 days
+            dtpStartDate.Value = DateTime.Today.AddDays(-7);
+            dtpEndDate.Value = DateTime.Now;
+            btnLast7Days.Select();
+            SetDateMenuButtonsUI(btnLast7Days);
+            model = new Dashboard();
+            LoadData();
+
         }
 
-        //Перетаскивание формы
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private void LoadData()
+        {
+            var refreshData = model.LoadData(dtpStartDate.Value, dtpEndDate.Value);
+            if (refreshData == true)
+            {
+                lblNumOrders.Text = model.NumOrders.ToString();
+                lblTotalRevenue.Text = "$" + model.TotalRevenue.ToString();
+                lblTotalProfit.Text = "$" + model.TotalProfit.ToString();
+                lblNumCustomers.Text = model.NumCustomers.ToString();
+                lblNumSuppliers.Text = model.NumSuppliers.ToString();
+                lblNumProducts.Text = model.NumProducts.ToString();
+                chartGrossRevenue.DataSource = model.GrossRevenueList;
+                chartGrossRevenue.Series[0].XValueMember = "Date";
+                chartGrossRevenue.Series[0].YValueMembers = "TotalAmount";
+                chartGrossRevenue.DataBind();
+                chartTopProducts.DataSource = model.TopProductsList;
+                chartTopProducts.Series[0].XValueMember = "Key";
+                chartTopProducts.Series[0].YValueMembers = "Value";
+                chartTopProducts.DataBind();
+                //dgvUnderstock.DataSource = model.UnderstockList;
+                //dgvUnderstock.Columns[0].HeaderText = "Item";
+                //dgvUnderstock.Columns[1].HeaderText = "Units";
+                Console.WriteLine("Loaded view :)");
+            }
+            else Console.WriteLine("View not loaded, same query");
+        }
+        private void SetDateMenuButtonsUI(object button)
+        {
+            var btn = (Button)button;
+            //Highlight button
+            btn.BackColor = btnLast30Days.FlatAppearance.BorderColor;
+            btn.ForeColor = Color.White;
+            //UnhighLigh button
+            if(currentButton != null&&currentButton!=btn)
+            {
+                currentButton.BackColor = this.BackColor;
+                currentButton.ForeColor = Color.FromArgb(124, 141, 181);
+            }
+            currentButton = btn; //Set current button
+
+            //dtpStartDate.Enabled = false;
+            //dtpEndDate.Enabled = false;
+            //btnOkCustomDate.Visible = false;
+        }
+        //Event methods
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = DateTime.Today;
+            dtpEndDate.Value = DateTime.Now;
+            LoadData();
+            SetDateMenuButtonsUI(sender);
+        }
+        private void btnLast7Days_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = DateTime.Today.AddDays(-7);
+            dtpEndDate.Value = DateTime.Now;
+            LoadData();
+            SetDateMenuButtonsUI(sender);
+        }
+        private void btnLast30Days_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = DateTime.Today.AddDays(-30);
+            dtpEndDate.Value = DateTime.Now;
+            LoadData();
+            SetDateMenuButtonsUI(sender);
+        }
+        private void btnThisMonth_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            dtpEndDate.Value = DateTime.Now;
+            LoadData();
+            SetDateMenuButtonsUI(sender);
+        }
+        private void btnCustomDate_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Enabled = true;
+            dtpEndDate.Enabled = true;
+            btnOkCustomDate.Visible = true;
+            SetDateMenuButtonsUI(sender);
+        }
+        private void btnOkCustomDate_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+    
+
+    //Перетаскивание формы
+    [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
@@ -241,12 +344,15 @@ namespace ApplicationRun.Forms
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
-                command_insert_log.ExecuteNonQuery();
+                //MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
+                //command_insert_log.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(appeal, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[0].Width = 100;
             }
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
@@ -259,12 +365,16 @@ namespace ApplicationRun.Forms
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
-                command_insert_log.ExecuteNonQuery();
+                //MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
+                //command_insert_log.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(hostipal, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns[0].Width = 200;
+                dataGridView1.Columns[2].Width = 145;
+                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
@@ -293,12 +403,18 @@ namespace ApplicationRun.Forms
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
-                command_insert_log.ExecuteNonQuery();
+                //MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
+                //command_insert_log.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(statistic, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns[0].Width = 70;
+                dataGridView1.Columns[1].Width = 70;
+                dataGridView1.Columns[2].Width = 75;
+                dataGridView1.Columns[03].Width = 115;
+                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
@@ -310,12 +426,15 @@ namespace ApplicationRun.Forms
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
-                command_insert_log.ExecuteNonQuery();
+                //MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Работа с обращениями', surname, name, NOW() FROM tmp_authorization;", connection);
+                //command_insert_log.ExecuteNonQuery();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(diagnos, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns[0].Width = 430;
+                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;

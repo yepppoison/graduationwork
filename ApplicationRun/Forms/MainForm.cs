@@ -140,8 +140,8 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            employees Main = new employees();
-            Main.ShowDialog();
+           // employees Main = new employees();
+           // Main.ShowDialog();
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();

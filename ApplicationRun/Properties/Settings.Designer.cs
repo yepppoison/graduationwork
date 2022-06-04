@@ -22,15 +22,5 @@ namespace ApplicationRun.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=graduationwork;Integrated Security=True")]
-        public string graduationworkConnectionString {
-            get {
-                return ((string)(this["graduationworkConnectionString"]));
-            }
-        }
     }
 }

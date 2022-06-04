@@ -15,15 +15,12 @@ namespace ApplicationRun.Forms
             this.Hide();
         }
 
-        private void bunifuButton1_Click(object sender, EventArgs e)
-        {
-            users Main = new users();
-            Main.Show(); 
-        }
 
         private void bunifuButton7_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            employee Main = new employee();
+            Main.ShowDialog(); 
         }
 
         private void bunifuButton2_Click(object sender, EventArgs e)
@@ -40,9 +37,7 @@ namespace ApplicationRun.Forms
 
         private void Admin_Load(object sender, EventArgs e)
         {
-            this.Hide();
-            employees Main = new employees();
-            Main.Show();
+
         }
     }
 }

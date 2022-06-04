@@ -279,10 +279,35 @@
         nspUNhnIQiaykXF9K1FadVK3Hq7uOOhW3hXx4Hv9L2qOi8O4QVzyAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnOkCustomDate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAObSURBVGhD7ZlH6xYxEIdfCyqoJ9tZ0YsF+0XxAwhiP9pO
+        gu2ioujVgnpVv4diAz+HvWEB9WBHj5bfAw4MYffdJLtZPewPHnhdN8lsMslM5j8aNGhQp5oslokd4rA4
+        +Rd+82yp4J3/SjPFXnFTfBO/G+CdG2KPmCH+meaJSyLG6Dpoe0HMEb1pojgivogqo14KVuOywDjg9y3x
+        SlS1+SwOCfouqrnirggNuC+OivmiSQvEcfFAhP3cEcVWY5F4IfyAD8VmMUGkijZbxSPh+3wuFopOhfHv
+        hQ3yU5wRU0RbTRXnBX1a/+9EZx+B2/iZ/y42iq61SdC3jfNMzBatxKbyPs8A60QprRf+I26LVhub08Y6
+        Y4lLzHwoVsK70wGRJc55f1Ti832JPWHjfhJZrkSQsk4eCzZbX+Jw8KfTOZEk0gMfYTkq+9Z2YeN/FdNF
+        tPYJa3xP5JzzbcXm9cFut4gWqYA1PMaDQlotOKIJXsSaUCeE2XGdBzEi3fXuE5Me5Ajj2aA2DulFKIKZ
+        /T8HSlQqTj5vjUi+SmiV8Mbzuy7yvhH23hIeNGmnsAa4UtdaIT4IG4NMdK2oEwmevbuNB03ywYs0eJzw
+        W5a+yn+rxMx/FNY/M48rjdNVYe+TcjfqtLAGTeev5UgYgnHjtFKkGo98UDvFgyalfACnh72LcXUfkWs8
+        Sv4A70JXeDBG4UmCkRjrFfp8ivEo2YWoHliDmE1ctSnXCLRcpGzYKvlNzAWoUZQ+rEHsMRquBEYTOdvM
+        vMkfo4t50CSCBbmHNeIOG6NwJTw5M4843awPAtkkESXqNtawKkLWqeojco1HFMWsn2s8iBVFJ2tIxSEl
+        mfMf0cZ4kjmKBmbHLhEtKmbejaI2jxNLT5klNsBVyR8muE9SOo0uCuvgiejzQsNY/kJzViSLagQuYJ0Q
+        UPqSnzxiyyyRJQKHdcRFmwt3aW0Rv4SNu19ki43kA8kPQemjlDYIxrDxCKStb4PUKn3OQ92mxEow8974
+        pyLbdUJx2aDcZ53jTuyJLjb2NIHPe7d5K2IDaLT4CL8SQLmFS0ZO9Yw2HJXMtO+Tf3duvIkCE+U+PyBQ
+        PeACHlOQJTYQYX2QMvD5ztymTmwqyn0+efO8FnwkabD9gYPfHAY+MfNwVHLa9Fq+YTXYBz5ip0JbglTx
+        WR8nQjypM3Wbuj87eXiHxIzcJjk9KC3SXUoflAUJgvZn1oOCzU4+H50SDxo0qEmj0R+lR53vaHTS1gAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="rjDropdownMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>199, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>78</value>
   </metadata>
 </root>
