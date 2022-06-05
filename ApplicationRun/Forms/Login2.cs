@@ -18,40 +18,40 @@ namespace ApplicationRun.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if(textBox1.Text=="")
-                { textBox1.Text = "Введите логин";
-                    return;
-                }
-                textBox1.ForeColor = Color.Gray;
-                panel5.Visible = false;
-            }
-            catch { }
+            //try
+            //{
+            //    if(textBox1.Text=="")
+            //    { textBox1.Text = "Введите логин";
+            //        return;
+            //    }
+            //    textBox1.ForeColor = Color.Gray;
+            //    panel5.Visible = false;
+            //}
+            //catch { }
         }
         
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (textBox2.Text == "")
-                { textBox2.Text = "Введите пароль";
-                    return;
-                }
-                textBox2.ForeColor = Color.Gray;
-                panel7.Visible = false;
-            }
-            catch{ }
+            //try
+            //{
+            //    if (textBox2.Text == "")
+            //    { textBox2.Text = "Введите пароль";
+            //        return;
+            //    }
+            //    textBox2.ForeColor = Color.Gray;
+            //    panel7.Visible = false;
+            //}
+            //catch{ }
         }
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            textBox1.SelectAll();
+            
         }
 
         private void textBox2_Click(object sender, EventArgs e)
         {
-            textBox2.SelectAll();
+            
         }
 
         private void bunifuButton7_MouseEnter(object sender, EventArgs e)
@@ -67,17 +67,7 @@ namespace ApplicationRun.Forms
         private void bunifuButton7_Click(object sender, EventArgs e)
         {
 
-            if (textBox1.Text == "Введите логин" || textBox1.Text == "") // or write you iwn Cindution
-            {
-                panel5.Visible = true;
-                return;
-            }
-            if (textBox2.Text == "Введите пароль" || textBox2.Text == "") // or write you iwn Cindution
-            {
-                panel7.Visible = true;
-                return;
-
-            }
+         
             string login = textBox1.Text;
             string password = textBox2.Text;
 
@@ -121,8 +111,9 @@ namespace ApplicationRun.Forms
                         //command_drop1.ExecuteNonQuery();
                         //MessageBox.Show("Вход выполнен");
                     }
-                    else { }
-                        //MessageBox.Show("Неправильный логин/пароль");
+                    else { 
+                        MessageBox.Show("Неправильный логин/пароль");
+                    }
 
                     //MySqlCommand command_drop2 = new MySqlCommand($"DROP TEMPORARY TABLE IF EXISTS tmp_authorization", connection);
                     //command_drop2.ExecuteNonQuery();
@@ -170,6 +161,11 @@ namespace ApplicationRun.Forms
                 textBox2.Focus();
             }
        
+        }
+
+        private void Login2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.ExitThread();
         }
     }
 }

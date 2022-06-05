@@ -17,8 +17,8 @@ namespace ApplicationRun.Forms
         public users()
         {
             InitializeComponent();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsers.AllowUserToAddRows = false;
 
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
@@ -26,7 +26,7 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
+                dgvUsers.DataSource = ds.Tables[0];
             }
         }
 
@@ -38,9 +38,9 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow row in dgvUsers.SelectedRows)
             {
-                dataGridView1.Rows.Remove(row);
+                dgvUsers.Rows.Remove(row);
             }
         }
 
@@ -54,7 +54,7 @@ namespace ApplicationRun.Forms
                     adapter = new MySqlDataAdapter(sql, connection);
                     ds = new DataSet();
                     adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
+                    dgvUsers.DataSource = ds.Tables[0];
                 }
             }
             catch (Exception exception)

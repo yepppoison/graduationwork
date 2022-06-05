@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace ApplicationRun.Forms
 {
-    public partial class diagnosis : Form
+    public partial class post : Form
     {
         
         DataSet ds;
@@ -15,7 +15,7 @@ namespace ApplicationRun.Forms
         MySqlCommandBuilder commandBuilder;
         string connectionString = @"SERVER=localhost;" + "DATABASE=graduationwork;" + "UID=root;" + "PASSWORD=dowhatthouwilt;" + "connection timeout = 180";
         string sql = "SELECT id '№', name_of_diagnosis 'Диагноз' FROM diagnosis";
-        public diagnosis()
+        public post()
         {
 
             InitializeComponent();

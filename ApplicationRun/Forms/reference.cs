@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ApplicationRun.Forms
 {
-    public partial class type_diagnosis : Form
+    public partial class reference : Form
     {
-        public type_diagnosis()
+        public reference()
         {
             InitializeComponent();
         }

@@ -347,17 +347,17 @@
     <Compile Include="Forms\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\convolution.cs">
+    <Compile Include="Forms\constants.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\convolution.Designer.cs">
-      <DependentUpon>convolution.cs</DependentUpon>
+    <Compile Include="Forms\constants.Designer.cs">
+      <DependentUpon>constants.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\diagnosis.cs">
+    <Compile Include="Forms\post.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\diagnosis.Designer.cs">
-      <DependentUpon>diagnosis.cs</DependentUpon>
+    <Compile Include="Forms\post.Designer.cs">
+      <DependentUpon>post.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\log.cs">
       <SubType>Form</SubType>
@@ -419,11 +419,11 @@
     <Compile Include="Forms\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\type_diagnosis.cs">
+    <Compile Include="Forms\reference.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\type_diagnosis.Designer.cs">
-      <DependentUpon>type_diagnosis.cs</DependentUpon>
+    <Compile Include="Forms\reference.Designer.cs">
+      <DependentUpon>reference.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\mainstatistics.cs">
       <SubType>Form</SubType>
@@ -442,11 +442,11 @@
     <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\convolution.resx">
-      <DependentUpon>convolution.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\constants.resx">
+      <DependentUpon>constants.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\diagnosis.resx">
-      <DependentUpon>diagnosis.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\post.resx">
+      <DependentUpon>post.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\log.resx">
       <DependentUpon>log.cs</DependentUpon>
@@ -471,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\patient.resx">
       <DependentUpon>patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\reference.resx">
+      <DependentUpon>reference.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\statistics.resx">
       <DependentUpon>statistics.cs</DependentUpon>

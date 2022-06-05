@@ -18,8 +18,8 @@ namespace ApplicationRun.Forms
         public log()
         {
             InitializeComponent();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvLog.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLog.AllowUserToAddRows = false;
 
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
@@ -27,7 +27,7 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
+                dgvLog.DataSource = ds.Tables[0];
             }
         }
 

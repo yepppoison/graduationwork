@@ -16,28 +16,45 @@ namespace ApplicationRun.Forms
         }
 
 
-        private void bunifuButton7_Click(object sender, EventArgs e)
+        private void btnEmployee_Click(object sender, EventArgs e)
         {
             this.Hide();
             employee Main = new employee();
             Main.ShowDialog(); 
         }
 
-        private void bunifuButton2_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void bunifuButton4_Click(object sender, EventArgs e)
+        private void btnLog_Click(object sender, EventArgs e)
         {
             this.Hide();
             log Main=new log();
-            Main.Show();
+            Main.ShowDialog();
         }
 
         private void Admin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnConstant_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            constants Main = new constants();
+            Main.ShowDialog();
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            users Main = new users();
+            Main.ShowDialog(); 
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            post Main = new post();
+            Main.ShowDialog();
         }
     }
 }

@@ -335,29 +335,9 @@ namespace ApplicationRun.Forms
             CollapseMenu();
         }
 
-
-        private void Open_DropdownMenu(RJDropdownMenu dropdownMenu, object sender)
-        {
-            Control control = (Control)sender;
-            dropdownMenu.VisibleChanged += new EventHandler((sender2, ev)
-                  => DropdownMenu_VisibleChanged(sender2, ev, control));
-            dropdownMenu.Show(control, control.Width, 0);
-              
-        }
-        private void DropdownMenu_VisibleChanged(object sender, EventArgs e, Control ctrl)
-        {
-            RJDropdownMenu dropdownMenu = (RJDropdownMenu)sender;
-            if(!DesignMode)
-            {
-                if (dropdownMenu.Visible)
-                    ctrl.BackColor = Color.SteelBlue;
-                else ctrl.BackColor = Color.SteelBlue;
-            }
-        }
-
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+           
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
@@ -378,7 +358,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+            
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
@@ -399,7 +379,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton4_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+            
             //using MySqlConnection connection = new MySqlConnection(connectionString);
             //{
             //    connection.Open();
@@ -416,7 +396,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton5_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+          
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
@@ -439,7 +419,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton7_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+   
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
@@ -459,7 +439,7 @@ namespace ApplicationRun.Forms
 
         private void iconButton6_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(rjDropdownMenu1, sender);
+            
             Admin Main = new Admin();
             Main.ShowDialog();
         }
@@ -513,7 +493,82 @@ namespace ApplicationRun.Forms
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; 
+            //ExcelPackage.LicenseContext = LicenseContext.NonCommercial; 
+            //int startRowT1 = 3;  //Для первого листа
+            //int startColT1 = 1;  //Для первого листа
+            //DateTime dt;
+            //double d;
+            //int i; int j;
+
+            //FileInfo template = new FileInfo("C:/Users/learner/Desktop/graduationwork/Tables/Обращения.xlsx");
+            //if (!template.Exists)
+            //{  //Делаем проверку - если Template.xlsx отсутствует - выходим по красной ветке
+            //    //gradu.SendErrorToLog("Упс! Файл Excel-шаблона 'Template.xlsx' отсутствует в директории проекта.", true);
+            //    //return null;
+            //}
+
+            //using (ExcelPackage exPack = new ExcelPackage(template, true))
+            //{
+            //    //Тут будет весь дальнейший код. А именно:
+            //    //Работа с 1 листом
+            //    //Работа со 2 листом
+            //    //Сохранение файла
+
+            //    ExcelWorksheet ws1 = exPack.Workbook.Worksheets[0];
+            //    for (i = 0; i <= dgvUnderstock.RowCount - 1; i++)
+            //    {
+            //        for (j = 0; j <= dgvUnderstock.ColumnCount - 1; j++)
+            //        {
+            //            ws1.Cells[i + 3, j + 1].Value = dgvUnderstock[j, i].Value.ToString();
+            //        }
+            //    }
+            //    Byte[] bin = exPack.GetAsByteArray();
+            //    string resPath = "C:/Users/learner/Desktop/graduationwork/Tables/Result.xlsx";
+            //    File.WriteAllBytes(resPath, bin);
+
+            //}
+
+
+
+            //using MySqlConnection connection = new MySqlConnection(connectionString);
+            //{
+            //    connection.Open();
+            //     MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод отчёта обращений', surname, name, NOW() FROM tmp_authorization;", connection);
+            //     command_insert_log.ExecuteNonQuery();
+            //}
+        }
+
+        private void lblStartDate_Click(object sender, EventArgs e)
+        {
+            if(currentButton==btnCustomDate)
+            {
+                dtpStartDate.Select();
+                SendKeys.Send("%{DOWN}");
+            }    
+        }
+
+        private void lblEndDate_Click(object sender, EventArgs e)
+        {
+            if (currentButton == btnCustomDate)
+            {
+                dtpEndDate.Select();
+                SendKeys.Send("%{DOWN}");
+            }
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            lblStartDate.Text = dtpStartDate.Text;
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            lblEndDate.Text = dtpEndDate.Text;
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             int startRowT1 = 3;  //Для первого листа
             int startColT1 = 1;  //Для первого листа
             DateTime dt;
@@ -553,37 +608,35 @@ namespace ApplicationRun.Forms
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 connection.Open();
-                 MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод отчёта обращений', surname, name, NOW() FROM tmp_authorization;", connection);
-                 command_insert_log.ExecuteNonQuery();
+                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод отчёта обращений', surname, name, NOW() FROM tmp_authorization;", connection);
+                command_insert_log.ExecuteNonQuery();
             }
         }
 
-        private void lblStartDate_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
-            if(currentButton==btnCustomDate)
+            printDocument1.Print();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             {
-                dtpStartDate.Select();
-                SendKeys.Send("%{DOWN}");
-            }    
-        }
-
-        private void lblEndDate_Click(object sender, EventArgs e)
-        {
-            if (currentButton == btnCustomDate)
-            {
-                dtpEndDate.Select();
-                SendKeys.Send("%{DOWN}");
+                connection.Open();
+                MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод обращений на печать', surname, name, NOW() FROM tmp_authorization;", connection);
+                command_insert_log.ExecuteNonQuery();
             }
         }
 
-        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        private void MainForm2_MouseDown(object sender, MouseEventArgs e)
         {
-            lblStartDate.Text = dtpStartDate.Text;
+
         }
 
-        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        private void MainForm2_KeyDown(object sender, KeyEventArgs e)
         {
-            lblEndDate.Text = dtpEndDate.Text;
+            if (e.KeyData == Keys.F1)
+            {
+                reference Main = new reference();
+                Main.ShowDialog();
+            }
+
         }
     }
 }

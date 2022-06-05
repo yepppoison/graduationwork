@@ -1,6 +1,6 @@
 ﻿namespace ApplicationRun.Forms
 {
-    partial class diagnosis
+    partial class post
     {
         /// <summary>
         /// Required designer variable.

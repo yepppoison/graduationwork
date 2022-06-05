@@ -23,8 +23,8 @@ namespace ApplicationRun.Forms
         public test()
         {
             InitializeComponent();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvPost.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPost.AllowUserToAddRows = false;
 
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
@@ -32,7 +32,7 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
+                dgvPost.DataSource = ds.Tables[0];
          
             }
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
@@ -53,7 +53,7 @@ namespace ApplicationRun.Forms
 
                     ds = new DataSet();
                     adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
+                    dgvPost.DataSource = ds.Tables[0];
                     MessageBox.Show(dateTimePicker1.Text);
 
 

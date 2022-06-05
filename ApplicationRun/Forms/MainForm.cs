@@ -163,7 +163,7 @@ namespace ApplicationRun.Forms
 
         private void bunifuButton10_Click(object sender, EventArgs e)
         {
-            convolution Main = new convolution();
+            constants Main = new constants();
             Main.ShowDialog();
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
@@ -193,7 +193,7 @@ namespace ApplicationRun.Forms
         private void bunifuButton6_Click_2(object sender, EventArgs e)
         {
             //ActiveForm.Enabled = false;
-            diagnosis Main = new diagnosis();
+            post Main = new post();
             Main.ShowDialog();
             using MySqlConnection connection = new MySqlConnection(connectionString);
             {
