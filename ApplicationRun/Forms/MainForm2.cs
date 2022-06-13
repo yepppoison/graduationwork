@@ -95,14 +95,34 @@ namespace ApplicationRun.Forms
             //UnhighLigh button
             if(currentButton != null&&currentButton!=btn)
             {
-                currentButton.BackColor = this.BackColor;
+                currentButton.BackColor = Color.LightBlue;
                 currentButton.ForeColor = Color.FromArgb(124, 141, 181);
             }
             currentButton = btn; //Set current button
 
-            //dtpStartDate.Enabled = false;
-            //dtpEndDate.Enabled = false;
-            //btnOkCustomDate.Visible = false;
+            //Enable custom dates
+            if(btn==btnCustomDate)
+            {
+                dtpStartDate.Enabled = true;
+                dtpEndDate.Enabled = true;
+                btnOkCustomDate.Visible = true;
+                lblStartDate.Cursor = Cursors.Hand;
+                lblEndDate.Cursor = Cursors.Hand;
+
+            }
+
+            //Disable custom dates
+            else
+            {
+
+                dtpStartDate.Enabled = false;
+                dtpEndDate.Enabled = false;
+                btnOkCustomDate.Visible = false;
+                lblStartDate.Cursor = Cursors.Default;
+                lblEndDate.Cursor = Cursors.Default;
+            }
+
+
         }
         //Event methods
         private void btnToday_Click(object sender, EventArgs e)
@@ -135,9 +155,6 @@ namespace ApplicationRun.Forms
         }
         private void btnCustomDate_Click(object sender, EventArgs e)
         {
-            dtpStartDate.Enabled = true;
-            dtpEndDate.Enabled = true;
-            btnOkCustomDate.Visible = true;
             SetDateMenuButtonsUI(sender);
         }
         private void btnOkCustomDate_Click(object sender, EventArgs e)
@@ -349,13 +366,13 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(appeal, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.DataSource = ds.Tables[0];
+                dgvUnderstock.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //dataGridView1.Columns[0].Width = 100;
             }
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvUnderstock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUnderstock.AllowUserToAddRows = false;
             
         }
 
@@ -370,14 +387,14 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(hostipal, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].Width = 200;
-                dataGridView1.Columns[2].Width = 145;
-                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.DataSource = ds.Tables[0];
+                dgvUnderstock.Columns[0].Width = 200;
+                dgvUnderstock.Columns[2].Width = 145;
+                dgvUnderstock.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvUnderstock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUnderstock.AllowUserToAddRows = false;
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -408,16 +425,16 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(statistic, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].Width = 70;
-                dataGridView1.Columns[1].Width = 70;
-                dataGridView1.Columns[2].Width = 75;
-                dataGridView1.Columns[03].Width = 115;
-                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.DataSource = ds.Tables[0];
+                dgvUnderstock.Columns[0].Width = 70;
+                dgvUnderstock.Columns[1].Width = 70;
+                dgvUnderstock.Columns[2].Width = 75;
+                dgvUnderstock.Columns[03].Width = 115;
+                dgvUnderstock.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvUnderstock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUnderstock.AllowUserToAddRows = false;
         }
 
         private void iconButton7_Click(object sender, EventArgs e)
@@ -431,13 +448,13 @@ namespace ApplicationRun.Forms
                 MySqlDataAdapter adapter = new MySqlDataAdapter(diagnos, connection);
                 ds = new DataSet();
                 adapter.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].Width = 430;
-                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.DataSource = ds.Tables[0];
+                dgvUnderstock.Columns[0].Width = 430;
+                dgvUnderstock.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUnderstock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
+            dgvUnderstock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUnderstock.AllowUserToAddRows = false;
         }
 
         private void iconButton6_Click(object sender, EventArgs e)
@@ -449,7 +466,8 @@ namespace ApplicationRun.Forms
 
         private void MainForm2_Load(object sender, EventArgs e)
         {
-
+            lblStartDate.Text = dtpStartDate.Text;
+            lblEndDate.Text = dtpEndDate.Text;
         }
 
         private void iconButton8_Click(object sender, EventArgs e)
@@ -517,11 +535,11 @@ namespace ApplicationRun.Forms
                 //Сохранение файла
 
                 ExcelWorksheet ws1 = exPack.Workbook.Worksheets[0];
-                for (i = 0; i <= dataGridView1.RowCount - 1; i++)
+                for (i = 0; i <= dgvUnderstock.RowCount - 1; i++)
                 {
-                    for (j = 0; j <= dataGridView1.ColumnCount - 1; j++)
+                    for (j = 0; j <= dgvUnderstock.ColumnCount - 1; j++)
                     {
-                        ws1.Cells[i + 3, j + 1].Value = dataGridView1[j, i].Value.ToString();
+                        ws1.Cells[i + 3, j + 1].Value = dgvUnderstock[j, i].Value.ToString();
                     }
                 }
                 Byte[] bin = exPack.GetAsByteArray();
@@ -538,6 +556,34 @@ namespace ApplicationRun.Forms
                  MySqlCommand command_insert_log = new MySqlCommand($"INSERT INTO log (login, move, surname, name, dt) SELECT login, 'Вывод отчёта обращений', surname, name, NOW() FROM tmp_authorization;", connection);
                  command_insert_log.ExecuteNonQuery();
             }
+        }
+
+        private void lblStartDate_Click(object sender, EventArgs e)
+        {
+            if(currentButton==btnCustomDate)
+            {
+                dtpStartDate.Select();
+                SendKeys.Send("%{DOWN}");
+            }    
+        }
+
+        private void lblEndDate_Click(object sender, EventArgs e)
+        {
+            if (currentButton == btnCustomDate)
+            {
+                dtpEndDate.Select();
+                SendKeys.Send("%{DOWN}");
+            }
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            lblStartDate.Text = dtpStartDate.Text;
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            lblEndDate.Text = dtpEndDate.Text;
         }
     }
 }
